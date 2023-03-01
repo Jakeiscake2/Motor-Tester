@@ -73,10 +73,5 @@ void opcontrol(){
 	while (true){
 		controls.set_text(0, 0, "How did we get here?");
 
-		/*
-		goal = c::vision_get_by_size(14, 0);
-		lcd::set_text(2, to_string(goal.x_middle_coord));
-		lcd::set_text(3, to_string(goal.y_middle_coord));
-		*/
-	}
+        }
 }
