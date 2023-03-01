@@ -9,34 +9,6 @@ Controller controls(E_CONTROLLER_MASTER);
 Motor flywheel1(19, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 Motor flywheel2(20, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 
-Motor FrontLeft(1, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-Motor BackLeft(2, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-
-Motor FrontRight(3, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
-Motor BackRight(4, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
-
-pros::MotorGroup leftMotors({FrontLeft, BackLeft});
-pros::MotorGroup rightMotors({FrontRight, BackRight});
-
-void go(int left, int right) {
-  leftMotors.move_relative(left, 127);
-  rightMotors.move_relative(right, 127);
-  vector<double> lefti = leftMotors.get_positions(),
-                 righti = rightMotors.get_positions();
-  vector<double> leftt = leftMotors.get_target_positions(),
-                 rightt = rightMotors.get_target_positions();
-  while (lefti<=leftt&&righti<=rightt) {
-    lefti = leftMotors.get_positions();
-    righti = rightMotors.get_positions();
-  }
-}
-
-int turn = 0;
-// Yulian get this done
-int tile = 0;
-
-
-
 void initialize(){
 	lcd::initialize();
 	pros::lcd::set_text(1, "Program running");
